@@ -58,12 +58,12 @@ const useStyles = makeStyles(theme => ({
         }
     },
     logoContainer: {
-        paddingLeft: '10em',
+        marginLeft: '10em',
         [theme.breakpoints.down("md")]: {
-            paddingLeft: '0em',
+            marginLeft: '0em',
         },
         [theme.breakpoints.down("md")]: {
-            paddingLeft: '0em',
+            marginLeft: '0em',
         },
         "&:hover": {
             backgroundColor: "transparent"
@@ -71,6 +71,13 @@ const useStyles = makeStyles(theme => ({
     },
     tabContainer: {
         marginLeft: 'auto',
+        marginRight: '10em',
+        [theme.breakpoints.down("md")]: {
+            marginRight: '0em',
+        },
+        [theme.breakpoints.down("md")]: {
+            marginRight: '0em',
+        },
     },
     tab: {
         ...theme.typography.tab,
@@ -228,8 +235,8 @@ export default function NavBar(props) {
                     />
                 ))}
             </Tabs>
-            <Button variant="contained" component={Link} to="/estimate" color="secondary" className={classes.button}>Free Estimate</Button>
-            <Menu
+            {/* <Button variant="contained" component={Link} to="/estimate" color="secondary" className={classes.button}>Free Estimate</Button> */}
+            {/* <Menu
                 id="simple-menu"
                 anchorEl={anchorEl}
                 keepMounted
@@ -252,7 +259,7 @@ export default function NavBar(props) {
                         {option.name}
                     </MenuItem>
                 ))}
-            </Menu>
+            </Menu> */}
         </React.Fragment>
     )
 

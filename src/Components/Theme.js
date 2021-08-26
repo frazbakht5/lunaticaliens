@@ -1,19 +1,20 @@
 import { createTheme } from '@material-ui/core/styles';
 
+const arcWhite = '#FFFFFF';
 const arcBlue = '#272941';
-const arcOrange = '#FFBA60';
 
 const theme = createTheme({
   palette: {
     common: {
       blue: `${arcBlue}`,
-      orange: `${arcOrange}`
+      white: `${arcWhite}`
+
     },
     primary: {
-      main: `${arcBlue}`,
+      main: `${arcWhite}`,
     },
     secondary: {
-      main: `${arcOrange}`,
+      main: `${arcBlue}`,
     },
   },
   typography: {
@@ -32,11 +33,12 @@ const theme = createTheme({
       lineHeight: 1.5
     },
     h3:{
-        fontFamily: 'Pacifico',
-        fontWeight: 400,
+        fontFamily: 'Roboto',
+        fontWeight: 500,
         textTransform: 'none',  //not all to uppercase
-        fontSize: '1.8rem',
+        fontSize: '1.5rem',
         color: `${arcBlue}`,
+        lineHeight: "2.5rem"
     },
     h4:{
       fontFamily: 'Raleway',
