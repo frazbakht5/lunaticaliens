@@ -1,6 +1,6 @@
 import { createTheme } from '@material-ui/core/styles';
 
-const arcWhite = '#FFFFFF';
+const arcWhite = '#f9f9f9';
 const arcBlue = '#272941';
 
 const theme = createTheme({
@@ -46,6 +46,12 @@ const theme = createTheme({
       textTransform: 'none',  //not all to uppercase
       fontSize: '1.6rem',
       color: `${arcBlue}`,
+    },
+    h6:{
+      fontFamily: 'Roboto',
+      fontWeight: 550,
+      textTransform: 'none',  //not all to uppercase
+      fontSize: '1.6rem',
     },
     estimate:{
       fontFamily: 'Pacifico',

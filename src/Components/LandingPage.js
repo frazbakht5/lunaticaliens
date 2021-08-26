@@ -5,6 +5,8 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Hidden from '@material-ui/core/Hidden';
+import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
 
 import NavBar from './NavBar'
 
@@ -18,8 +20,8 @@ import { maxWidth } from '@material-ui/system';
 const useStyles = makeStyles(theme => ({
 
     mainContainer: {
-        marginTop: '5em',
-
+        // marginTop: '5em',
+        backgroundColor: theme.palette.common.white,
         [theme.breakpoints.down("md")]: {
             marginTop: '3em'
         },
@@ -41,15 +43,16 @@ const useStyles = makeStyles(theme => ({
     servicesText: {
         ...theme.typography.button,
         // backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(1),
+        padding: theme.spacing(2),
         textAlign: 'center',
         maxWidth: '8em',
         minWidth: '8em',
-        minHeight: '3.5em',
-        marginRight: '3.5em',
-        marginLeft: '3.5em',
-        marginTop: '3em',
-        shapeOutside: '1em',
+        color: theme.palette.primary.dark,
+        // minHeight: '3.5em',
+        // marginRight: '3.5em',
+        // marginLeft: '3.5em',
+        // marginTop: '3em',
+        // shapeOutside: '1em',
         // boxShadow: theme.shadows[2],
     },
     servicesTextContainer: {
@@ -57,27 +60,23 @@ const useStyles = makeStyles(theme => ({
         // maxWidth: '8em',
         minWidth: '8em',
         minHeight: '3.5em',
-        marginRight: '3.5em',
-        marginLeft: '3.5em',
-        marginTop: '3em',
-        boxShadow: theme.shadows[2],
+        // marginRight: '3.5em',
+        // marginLeft: '3.5em',
+        margin: '3em',
+        boxShadow: theme.shadows[3],
 
         [theme.breakpoints.down("sm")]: {
-            marginTop: '1em'
+            margin: 0,
+            marginTop: '1em',
+            // paddingRight: '40%',
+            // paddingLeft: '40%'
         },
     },
     heroBG: {
 
     },
-    heroContainer: {
-        /*      backgroundImage: `url(${Image})`,
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              backgroundSize: 'cover',
-              height: '100%',
-              width: '100%'
-      */
-        backgroundColor: '#f5f4f5'
+    downArrow: {
+        marginTop: '1.5em'
     }
 }));
 
@@ -95,13 +94,13 @@ export default function LandingPage(props) {
             justifyContent="center"
             alignItems="center">
             <Grid item className={classes.servicesTextContainer}>
-                <Typography variant='BUTTON TEXT' className={classes.servicesText}>UX/UI</Typography>
+                <Typography variant='h6' className={classes.servicesText}>UX/UI</Typography>
             </Grid>
             <Grid item className={classes.servicesTextContainer}>
-                <Typography variant='BUTTON TEXT' className={classes.servicesText}>Mobile Development</Typography>
+                <Typography variant='h6' className={classes.servicesText}>Mobile Development</Typography>
             </Grid>
             <Grid item className={classes.servicesTextContainer}>
-                <Typography variant='BUTTON TEXT' className={classes.servicesText}>Web Development</Typography>
+                <Typography variant='h6' className={classes.servicesText}>Web Development</Typography>
             </Grid>
         </Grid>
     )
@@ -115,7 +114,7 @@ export default function LandingPage(props) {
                 justifyContent="center"
                 alignItems="center"
                 className={classes.heroContainer}
-                // style={{ height: '40em' }}
+            // style={{ height: '40em' }}
             >
 
                 <img src={avatar} alt='avatar' className={classes.avatar} />
@@ -129,6 +128,12 @@ export default function LandingPage(props) {
                 <Grid item>
                     {servicesDisplay}
                 </Grid>
+                <Hidden smDown>
+                    <ArrowDropDownCircleOutlinedIcon
+                        className={classes.downArrow}
+                        color="secondary.light.abc"
+                        style={{ fontSize: 60 }} />
+                </Hidden>
             </Grid>
         </React.Fragment >
     )
