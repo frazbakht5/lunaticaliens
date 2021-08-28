@@ -16,6 +16,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
+import { HashLink } from 'react-router-hash-link';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.svg'
 
@@ -159,53 +160,27 @@ export default function NavBar(props) {
 
     const [value, setValue] = useState(0);
     const [selectedIndex, setSelectedIndex] = useState(0);
-    const [anchorEl, setAnchorEl] = useState(null);
-    const [openMenu, setOpenMenu] = useState(false);
-    const [openDrawer, setOpenDrawer] = useState(false);
+    const aboutRef = props.getAbourRef;
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     }
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-        setOpenMenu(true);
-    }
-
-    const handleClose = (event) => {
-        setAnchorEl(null);
-        setOpenMenu(false);
-    }
-
-    const handleMenuItemClick = (event, index) => {
-        setSelectedIndex(index);
-        setAnchorEl(null);
-        setOpenMenu(false);
-    };
-
-    const menuOptions = [
-        { name: "Services", link: "/services", activeIndex: 1, selectedIndex: 0 },
-        { name: "Website Development", link: "/websites", activeIndex: 1, selectedIndex: 1 },
-        { name: "Mobile App Development", link: "/mobileapps", activeIndex: 1, selectedIndex: 2 },
-        { name: "Custom Software Development", link: "/customsoftware", activeIndex: 1, selectedIndex: 3 }
-    ]
 
     const routes = [
-        { name: "Projects", link: "/projects", activeIndex: 0 },
-        { name: "Probono", link: "/probono", activeIndex: 1, ariaOwns: anchorEl ? "simple-menu" : undefined, ariaPopup: anchorEl ? true : undefined, mouseOver: (event) => handleClick(event) },
-        { name: "About", link: "/about", activeIndex: 2 },
-        { name: "Business", link: "/business", activeIndex: 3 },
+        { name: "Projects", link: "#projects", activeIndex: 0 },
+        { name: "Probono", link: "#probono", activeIndex: 1, },
+        { name: "About", link: "#about", activeIndex: 2, },
+        { name: "Business", link: "#business", activeIndex: 3 },
     ]
 
     useEffect(() => {
 
-        [...menuOptions, ...routes].forEach((route) => {
+        [...routes].forEach((route) => {
             switch (window.location.pathname) {
                 case `${route.link}`:
                     if (value !== route.activeIndex) {
                         setValue(route.activeIndex);
-                        if (route.selectedIndex && route.selectedIndex !== selectedIndex)
-                        setSelectedIndex(route.selectedIndex)
                     }
                     break;
                 default:
@@ -215,10 +190,7 @@ export default function NavBar(props) {
 
         if (window.location.pathname === "/estimate" && value !== 5)
             setValue(5);
-
-
-
-    }, [value, selectedIndex, menuOptions, routes])
+    }, [value, selectedIndex, routes])
 
     const tabs = (
         <React.Fragment>
@@ -227,89 +199,15 @@ export default function NavBar(props) {
                     <Tab
                         key={`${route}${index}`}
                         className={classes.tab}
-                        component={Link} to={route.link}
+                        component={HashLink} to={route.link}
                         label={route.name}
-                        aria-owns={route.ariaOwns}
-                        aria-haspopup={route.ariaPopup}
-                        onMouseOver={route.mouseOver}
                     />
                 ))}
             </Tabs>
-            {/* <Button variant="contained" component={Link} to="/estimate" color="secondary" className={classes.button}>Free Estimate</Button> */}
-            {/* <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={openMenu}
-                onClose={handleClose}
-                MenuListProps={{ onMouseLeave: handleClose }}
-                classes={{ paper: classes.menu }}
-                style={{ zIndex: theme.zIndex.modal + 2 }}
-                elevation={0}
-            >
-                {menuOptions.map((option, i) => (
-                    <MenuItem
-                        key={`${option}${i}`}
-                        classes={{ root: classes.menuItem }}
-                        onClick={(event) => { handleMenuItemClick(event, i); setValue(1); handleClose(event) }}
-                        component={Link}
-                        to={option.link}
-                        selected={i === selectedIndex && value === 1}
-                    >
-                        {option.name}
-                    </MenuItem>
-                ))}
-            </Menu> */}
         </React.Fragment>
     )
 
 
-    const drawer = (
-        <React.Fragment>
-            <SwipeableDrawer
-                disableBackdropTransition={!iOS}
-                disableDiscovery={iOS}
-                open={openDrawer}
-                onClose={() => setOpenDrawer(false)}
-                onOpen={() => setOpenDrawer(true)}
-                classes={{ paper: classes.drawer }}>
-                <List disablePadding>
-                    <div className={classes.toolbarMargin} />
-                    {
-                        routes.map((route, index) => (
-                            <ListItem
-                                key={`${route}${route.activeIndex}`}
-                                onClick={() => { setOpenDrawer(false); setValue(index) }}
-                                divider
-                                button
-                                component={Link} to={route.link}
-                                selected={value === index}
-                            >
-                                <ListItemText
-                                    disableTypography
-                                    className={value === index ? `${classes.drawerItem} ${classes.drawerItemSelected}` : classes.drawerItem}
-                                >{route.name}</ListItemText>
-                            </ListItem>
-                        ))}
-                    <ListItem
-                        onClick={() => { setOpenDrawer(false); setValue(5) }}
-                        divider button component={Link} to="/estimate"
-                        selected={value === 5}
-                        className={classes.drawerItemEstimate}
-                    >
-                        <ListItemText disableTypography
-                            className={value === 5 ? `${classes.drawerItem} ${classes.drawerItemEstimateText} ${classes.drawerItemSelected}` : `${classes.drawerItem} ${classes.drawerItemEstimateText}`} primary='Free Estimate' />
-                    </ListItem>
-                </List>
-            </SwipeableDrawer>
-            <IconButton
-                className={classes.drawerIconContainer}
-                onClick={() => setOpenDrawer(!openDrawer)}
-                disableRipple>
-                <MenuIcon className={classes.drawerMenuIcon} />
-            </IconButton>
-        </React.Fragment>
-    )
 
     return (
         <React.Fragment>
@@ -319,7 +217,7 @@ export default function NavBar(props) {
                         <Button component={Link} to="/" className={classes.logoContainer} disableRipple onClick={() => setValue(0)}>
                             <img alt='Company logo' className={classes.logo} src={logo} />
                         </Button>
-                        {matches ? drawer : tabs}
+                        {matches ? undefined : tabs}
                     </Toolbar>
                 </AppBar>
             </ElevationScroll>

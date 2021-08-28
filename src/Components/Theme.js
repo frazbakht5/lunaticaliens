@@ -25,7 +25,7 @@ const theme = createTheme({
       fontSize: '1rem',
     },
     h2:{
-      fontFamily: 'Raleway',
+      fontFamily: 'Roboto',
       fontWeight: 700,
       textTransform: 'none',  //not all to uppercase
       fontSize: '2.5rem',
@@ -52,6 +52,12 @@ const theme = createTheme({
       fontWeight: 550,
       textTransform: 'none',  //not all to uppercase
       fontSize: '1.6rem',
+    },
+    body1:{
+      fontFamily: 'Roboto',
+      textTransform: 'none',  //not all to uppercase
+      fontSize: '1rem',
+      color: `${arcBlue}`,
     },
     estimate:{
       fontFamily: 'Pacifico',
