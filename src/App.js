@@ -4,6 +4,7 @@ import { ThemeProvider } from '@material-ui/styles';
 
 import LandingPage from './Components/LandingPage'
 import theme from './Components/Theme'
+import NavBar from './Components/NavBar';
 // import LandingPage from './Components/LandingPage'
 
 
@@ -12,11 +13,11 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        {/* <NavBar/> */}
-        <LandingPage/>
+        <NavBar/>
+        {/* <LandingPage/> */}
         <Switch>
-        {/* <Route exact path="/" component={LandingPage} /> */}
-        {/* <Route exact path="/" component={() => <div>Landing Page👋</div>} /> */}
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/project" component={() => <div>Project display page</div>} />
         </Switch>
         
       </BrowserRouter>

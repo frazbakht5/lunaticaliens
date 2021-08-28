@@ -159,8 +159,7 @@ export default function NavBar(props) {
     const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
     const [value, setValue] = useState(0);
-    const [selectedIndex, setSelectedIndex] = useState(0);
-    const aboutRef = props.getAbourRef;
+
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -168,10 +167,10 @@ export default function NavBar(props) {
 
 
     const routes = [
-        { name: "Projects", link: "#projects", activeIndex: 0 },
-        { name: "Probono", link: "#probono", activeIndex: 1, },
-        { name: "About", link: "#about", activeIndex: 2, },
-        { name: "Business", link: "#business", activeIndex: 3 },
+        { name: "Projects", link: "/#projects", activeIndex: 0 },
+        { name: "Probono", link: "/#probono", activeIndex: 1, },
+        { name: "About", link: "/#about", activeIndex: 2, },
+        { name: "Business", link: "/#business", activeIndex: 3 },
     ]
 
     useEffect(() => {
@@ -187,10 +186,7 @@ export default function NavBar(props) {
                     break;
             }
         })
-
-        if (window.location.pathname === "/estimate" && value !== 5)
-            setValue(5);
-    }, [value, selectedIndex, routes])
+    }, [value, routes])
 
     const tabs = (
         <React.Fragment>
@@ -199,7 +195,7 @@ export default function NavBar(props) {
                     <Tab
                         key={`${route}${index}`}
                         className={classes.tab}
-                        component={HashLink} to={route.link}
+                        component={HashLink } to={route.link}
                         label={route.name}
                     />
                 ))}

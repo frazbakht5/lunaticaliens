@@ -70,6 +70,12 @@ const theme = createTheme({
       textTransform: 'none',  //not all to uppercase
       fontSize: '1rem',
       color: `grey`,
+    },
+    minor:{
+      fontFamily: 'Roboto',
+      textTransform: 'none',  //not all to uppercase
+      fontSize: '0.5rem',
+      color: `${arcWhite}`,
     }
 
 
