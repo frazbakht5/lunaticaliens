@@ -71,6 +71,7 @@ const useStyles = makeStyles(theme => ({
 		marginTop: '1em'
 	},
 	copyrightsText:{
+		textAlign: 'center',
 		color: theme.palette.primary.main,
 		marginTop: '2em'
 	}
