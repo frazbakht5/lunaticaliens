@@ -1,12 +1,11 @@
 import avatar from '../assets/avatar.jpg'
-import Image from '../assets/hero_bg.jpg'
 import sample1 from '../assets/sample1.jpg'
 import sample2 from '../assets/sample2.jpg'
 import sample3 from '../assets/sample3.jpg'
 import experience1 from '../assets/experience-1.svg'
 import experience2 from '../assets/experience-2.svg'
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -14,27 +13,15 @@ import Hidden from '@material-ui/core/Hidden';
 import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
-import IconButton from '@material-ui/core/IconButton';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-import ImageList from '@material-ui/core/ImageList';
-import { HashLink } from 'react-router-hash-link';
 import { Link, useHistory } from 'react-router-dom';
-
-import NavBar from './NavBar'
 
 import Grid from '@material-ui/core/Grid';
 import { Button, Typography } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 
-import { fontWeight } from '@material-ui/system';
-import { maxWidth } from '@material-ui/system';
-import Footer from './Footer'
-
-
 const useStyles = makeStyles(theme => ({
 
     mainContainer: {
-        // marginTop: '5em',
         backgroundColor: theme.palette.common.white,
         [theme.breakpoints.down("md")]: {
             marginTop: '3em'
@@ -56,34 +43,22 @@ const useStyles = makeStyles(theme => ({
     },
     servicesText: {
         ...theme.typography.button,
-        // backgroundColor: theme.palette.background.paper,
         padding: theme.spacing(2),
         textAlign: 'center',
         maxWidth: '8em',
         minWidth: '8em',
         color: theme.palette.primary.dark,
-        // minHeight: '3.5em',
-        // marginRight: '3.5em',
-        // marginLeft: '3.5em',
-        // marginTop: '3em',
-        // shapeOutside: '1em',
-        // boxShadow: theme.shadows[2],
     },
     servicesTextContainer: {
         backgroundColor: theme.palette.background.paper,
-        // maxWidth: '8em',
         minWidth: '8em',
         minHeight: '5.5em',
-        // marginRight: '3.5em',
-        // marginLeft: '3.5em',
         margin: '3em',
         boxShadow: theme.shadows[3],
 
         [theme.breakpoints.down("sm")]: {
             margin: 0,
             marginTop: '1em',
-            // paddingRight: '40%',
-            // paddingLeft: '40%'
         },
     },
     downArrow: {
@@ -94,7 +69,6 @@ const useStyles = makeStyles(theme => ({
     },
     imageList: {
         flexWrap: 'nowrap',
-        // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
         transform: 'translateZ(0)',
     },
     title: {
@@ -195,16 +169,16 @@ export default function LandingPage(props) {
             </Grid>
         </Grid>
     )
-/*
-    function handleClick(i) {
-        const sample = samples[i];
-        props.setTitle(sample.title);
-        props.setDescription(sample.description);
-        props.setImage(sample.img);
-        props.setPlayStoreLink(sample.pl);
-        props.setWebsiteLink(sample.title);
-      }
-*/
+    /*
+        function handleClick(i) {
+            const sample = samples[i];
+            props.setTitle(sample.title);
+            props.setDescription(sample.description);
+            props.setImage(sample.img);
+            props.setPlayStoreLink(sample.pl);
+            props.setWebsiteLink(sample.title);
+          }
+    */
     const goToProjectsSection = () => window.scrollTo({ top: projectsRef.current.offsetTop, behavior: 'smooth' });
 
 
@@ -234,10 +208,9 @@ export default function LandingPage(props) {
                     <Button disableRipple
                         onClick={() => goToProjectsSection()}
                         className={classes.downArrow}
-                        onClick={goToProjectsSection}>
+                    >
                         <ArrowDropDownCircleOutlinedIcon
                             style={{ fontSize: 60 }}
-                        // component={HashLink} to={'#projects'}
                         />
                     </Button>
                 </Hidden>
@@ -311,7 +284,6 @@ export default function LandingPage(props) {
                             justifyContent="flex-start"
                             alignItems="center"
                             className={classes.experienceDetailsContainer}
-                        // spacing={2}
                         >
 
                             <Grid item sm={1} lg={1}>  {/*location & date*/}
