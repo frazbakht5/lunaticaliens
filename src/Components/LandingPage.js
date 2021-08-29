@@ -18,7 +18,7 @@ import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import ImageList from '@material-ui/core/ImageList';
 import { HashLink } from 'react-router-hash-link';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import NavBar from './NavBar'
 
@@ -139,7 +139,18 @@ export default function LandingPage(props) {
     const theme = useTheme();
     const projectsRef = useRef(null);
     const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+    const history = useHistory();
 
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
+
+    useEffect(() => {
+        scrollToTop()
+    }, []);
 
     const samples = [
         { img: sample1, title: 'sample 1', },
@@ -184,8 +195,16 @@ export default function LandingPage(props) {
             </Grid>
         </Grid>
     )
-
-
+/*
+    function handleClick(i) {
+        const sample = samples[i];
+        props.setTitle(sample.title);
+        props.setDescription(sample.description);
+        props.setImage(sample.img);
+        props.setPlayStoreLink(sample.pl);
+        props.setWebsiteLink(sample.title);
+      }
+*/
     const goToProjectsSection = () => window.scrollTo({ top: projectsRef.current.offsetTop, behavior: 'smooth' });
 
 
@@ -233,7 +252,7 @@ export default function LandingPage(props) {
                 {
                     samples.map((item, i) => (
                         <Grid item xs={6} sm={6} md={3} key={item + i} style={{ padding: 5 }}>
-                            <Link to ="/project">
+                            <Link to="/project">
                                 <ImageListItem >
                                     <img src={item.img} alt={item.title} className={classes.portfolioImage} />
                                     <ImageListItemBar title={item.title}
@@ -323,8 +342,6 @@ export default function LandingPage(props) {
         </React.Fragment >
     )
 
-
-
     return (
         <React.Fragment>
 
@@ -343,7 +360,6 @@ export default function LandingPage(props) {
                 <Grid item >
                     {ExperienceBlockDesktop}
                 </Grid>
-                <Footer />
             </Grid>
         </React.Fragment>
     );

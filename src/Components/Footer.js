@@ -14,9 +14,11 @@ import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
+	mainContainer:{
+		backgroundColor: theme.palette.secondary.dark,
+	},
 	footer: {
 		width: '100%',
-		backgroundColor: theme.palette.secondary.dark,
 		zIndex: theme.zIndex.modal + 1,
 		position: 'relative',
 		marginTop: '8em',
@@ -26,13 +28,13 @@ const useStyles = makeStyles(theme => ({
 		borderRadius: '10'
 	},
 	logoContainer: {
-		marginLeft: '10em',
-		[theme.breakpoints.down("md")]: {
-			marginLeft: '0em',
-		},
-		[theme.breakpoints.down("md")]: {
-			marginLeft: '0em',
-		},
+		// marginLeft: '10em',
+		// [theme.breakpoints.down("md")]: {
+		// 	marginLeft: '0em',
+		// },
+		// [theme.breakpoints.down("md")]: {
+		// 	marginLeft: '0em',
+		// },
 		"&:hover": {
 			backgroundColor: "transparent"
 		}
@@ -64,9 +66,14 @@ const useStyles = makeStyles(theme => ({
 		// }
 	},
 	socialIconContainer: {
-		position: 'absolute',
-		right: '1.5em'
+		// position: 'absolute',
+		// right: '1.5em'
+		marginTop: '1em'
 	},
+	copyrightsText:{
+		color: theme.palette.primary.main,
+		marginTop: '2em'
+	}
 
 }));
 
@@ -77,31 +84,43 @@ export default function Footer(props) {
 
 	return (
 		<React.Fragment>
-			<footer
-				className={classes.footer}
+			<footer className={classes.footer}
 			>
 				<Grid
 					container
-					direction="row"
-					justifyContent="space-between"
+					direction="column"
+					justifyContent="center"
 					alignItems="center"
-					className={classes.footerContainer}
+					className={classes.mainContainer}
 				>
-					<Button component={Link} to="/" className={classes.logoContainer} disableRipple>
-						<img alt='Company logo' className={classes.logo} src={logo} />
-					</Button>
-
-
-
-					<Grid container className={classes.socialIconContainer} justifyContent="flex-end">
-						<Grid item component={"a"} href="https://www.facebook.com/" rel="noopener no referrer" target="_blank" >
-							<img src={facebook} alt='fb logo' className={classes.icon} />
+					<Grid item>
+						<Grid
+							container
+							direction="row"
+							justifyContent="space-between"
+							alignItems="center"
+							className={classes.footerContainer}
+						>
+							<Link to="/" className={classes.logoContainer} disableRipple>
+								<img alt='Company logo' className={classes.logo} src={logo} />
+							</Link>
 						</Grid>
-						<Grid item component={"a"} href="https://twitter.com/home?lang=en" rel="noopener no referrer" target="_blank">
-							<img src={twitter} alt='twitter logo' className={classes.icon} />
+
+						<Grid item>
+							<Grid container className={classes.socialIconContainer} justifyContent="center">
+								<Grid item component={"a"} href="https://www.facebook.com/" rel="noopener no referrer" target="_blank" >
+									<img src={facebook} alt='fb logo' className={classes.icon} />
+								</Grid>
+								<Grid item component={"a"} href="https://twitter.com/home?lang=en" rel="noopener no referrer" target="_blank">
+									<img src={twitter} alt='twitter logo' className={classes.icon} />
+								</Grid>
+								<Grid item component={"a"} href="https://www.instagram.com/" rel="noopener no referrer" target="_blank">
+									<img src={instagram} alt='instagram logo' className={classes.icon} />
+								</Grid>
+							</Grid>
 						</Grid>
-						<Grid item component={"a"} href="https://www.instagram.com/" rel="noopener no referrer" target="_blank">
-							<img src={instagram} alt='instagram logo' className={classes.icon} />
+						<Grid item className={classes.copyrightsText}>
+							<Typography variant='caption' >Lunatic Aliens © 2021 All Rights</Typography>
 						</Grid>
 					</Grid>
 				</Grid>

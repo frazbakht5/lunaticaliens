@@ -71,7 +71,7 @@ const theme = createTheme({
       fontSize: '1rem',
       color: `grey`,
     },
-    minor:{
+    caption:{
       fontFamily: 'Roboto',
       textTransform: 'none',  //not all to uppercase
       fontSize: '0.5rem',
