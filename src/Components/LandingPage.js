@@ -23,6 +23,9 @@ const useStyles = makeStyles(theme => ({
 
     mainContainer: {
         backgroundColor: theme.palette.common.white,
+        paddingLeft: '2em',
+        paddingRight: '2em',
+
         [theme.breakpoints.down("md")]: {
             marginTop: '3em'
         },
