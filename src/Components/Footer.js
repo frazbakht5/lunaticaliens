@@ -10,6 +10,7 @@ import facebook from '../assets/facebook.svg'
 import twitter from '../assets/twitter.svg'
 import instagram from '../assets/instagram.svg'
 import logo from '../assets/logo.svg'
+import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
@@ -27,6 +28,13 @@ const useStyles = makeStyles(theme => ({
 		borderRadius: '10'
 	},
 	logoContainer: {
+		// marginLeft: '10em',
+		// [theme.breakpoints.down("md")]: {
+		// 	marginLeft: '0em',
+		// },
+		// [theme.breakpoints.down("md")]: {
+		// 	marginLeft: '0em',
+		// },
 		"&:hover": {
 			backgroundColor: "transparent"
 		}
@@ -52,8 +60,15 @@ const useStyles = makeStyles(theme => ({
 			height: '1.5em',
 			width: '1.5em',
 		},
+		// [theme.breakpoints.down("xs")]: {
+		// 	height: '1em',
+		// 	width: '1em',
+		// }
+		//
 	},
 	socialIconContainer: {
+		// position: 'absolute',
+		// right: '1.5em'
 		marginTop: '1em'
 	},
 	copyrightsText:{

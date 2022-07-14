@@ -1,0 +1,39 @@
+.float-container{
+	width: 95%;
+	height: 80vh;
+	border: 2px solid red;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.icon{
+	width: 30px;
+	height: 30px;
+	transform: translate(calc(0vw), calc(0vh));
+	animation: float 5s ease-in-out infinite;
+}
+
+
+
+@keyframes float {
+	0%{
+		transform: translate(calc(0vw), calc(20vh));
+	}
+
+	25%{
+		transform: translate(calc(20vw), calc(92.8vh));
+	}
+
+	50%{
+		transform: translate(calc(100vw), calc(60vh));
+	}
+
+	75%{
+		transform: translate(calc(30vw), calc(10vh));
+	}
+
+	100%{
+		transform: translate(calc(0vw), calc(20vh));
+	}
+}

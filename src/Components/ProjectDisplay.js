@@ -1,5 +1,5 @@
 import Box from '@material-ui/core/Box';
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from "@material-ui/core";
 import Button from '@material-ui/core/Button';
@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
 	mainContainer: {
+		// width: '90%'
 	},
 	icons: {
 		width: '10em',
@@ -63,6 +64,7 @@ export default function ProjectDisplay(props) {
 				justifyContent="center"
 				alignItems="center"
 				className={classes.mainContainer}
+			// spacing={4}
 			>
 				<Grid item className={classes.rowContainer}>
 					<Grid

@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/styles';
 import React, { useState, useEffect, useRef } from 'react';
+// import '@fontsource/roboto';
 
 import LandingPage from './Components/LandingPage'
 import theme from './Components/Theme'
@@ -29,6 +30,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <NavBar />
+        {/* <LandingPage/> */}
         <Switch>
           <Route exact path="/" component={() => <LandingPage
 

@@ -1,11 +1,12 @@
 import avatar from '../assets/avatar.jpg'
+import Image from '../assets/hero_bg.jpg'
 import sample1 from '../assets/sample1.jpg'
 import sample2 from '../assets/sample2.jpg'
 import sample3 from '../assets/sample3.jpg'
 import experience1 from '../assets/experience-1.svg'
 import experience2 from '../assets/experience-2.svg'
 
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -16,16 +17,51 @@ import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import { Link, useHistory } from 'react-router-dom';
 
 import Grid from '@material-ui/core/Grid';
-import { Button, Typography } from '@material-ui/core';
+import { Button, Icon, Typography } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
+
+
+import "./FloatingIcons/FloatBlockStyle.css";
+import instaIcon from '../assets/insta-icon.png'
+import ficon1 from '../assets/ficon1.png'
+import ficon2 from '../assets/ficon2.png'
+import ficon3 from '../assets/ficon3.png'
+import ficon4 from '../assets/ficon4.png'
+
+import styled, { keyframes } from "styled-components";
+//hello
+
+
+
+const floatingIcons = [
+    {
+        src: instaIcon,
+        alt: "icon1"
+    },
+    {
+        src: ficon1,
+        alt: ficon1
+    },
+    {
+        src: ficon2,
+        alt: ficon2
+    },
+    {
+        src: ficon3,
+        alt: ficon3
+    },
+    {
+        src: ficon4,
+        alt: ficon4
+    },
+]
+
 
 const useStyles = makeStyles(theme => ({
 
     mainContainer: {
+        // marginTop: '5em',
         backgroundColor: theme.palette.common.white,
-        paddingLeft: '2em',
-        paddingRight: '2em',
-
         [theme.breakpoints.down("md")]: {
             marginTop: '3em'
         },
@@ -34,34 +70,50 @@ const useStyles = makeStyles(theme => ({
         }
     },
     avatar: {
-        height: '8em'
+        height: '8em',
+        zIndex: 1099
     },
     introText: {
-        textAlign: 'center'
+        textAlign: 'center',
+        zIndex: 1099
     },
     taglineText: {
         textAlign: 'center',
         fontWeight: 700,
-        marginTop: '2em'
+        marginTop: '2em',
+        zIndex: 1099
     },
     servicesText: {
         ...theme.typography.button,
+        // backgroundColor: theme.palette.background.paper,
         padding: theme.spacing(2),
         textAlign: 'center',
         maxWidth: '8em',
         minWidth: '8em',
         color: theme.palette.primary.dark,
+        // minHeight: '3.5em',
+        // marginRight: '3.5em',
+        // marginLeft: '3.5em',
+        // marginTop: '3em',
+        // shapeOutside: '1em',
+        // boxShadow: theme.shadows[2],
     },
     servicesTextContainer: {
         backgroundColor: theme.palette.background.paper,
+        // maxWidth: '8em',
         minWidth: '8em',
         minHeight: '5.5em',
+        // marginRight: '3.5em',
+        // marginLeft: '3.5em',
         margin: '3em',
         boxShadow: theme.shadows[3],
+        zIndex: 1099,
 
         [theme.breakpoints.down("sm")]: {
             margin: 0,
             marginTop: '1em',
+            // paddingRight: '40%',
+            // paddingLeft: '40%'
         },
     },
     downArrow: {
@@ -72,6 +124,7 @@ const useStyles = makeStyles(theme => ({
     },
     imageList: {
         flexWrap: 'nowrap',
+        // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
         transform: 'translateZ(0)',
     },
     title: {
@@ -106,6 +159,9 @@ const useStyles = makeStyles(theme => ({
             height: '2em',
             width: '2em',
         }
+    },
+    heroContainer:{
+        zIndex: '1090'
     }
 }));
 
@@ -116,7 +172,6 @@ export default function LandingPage(props) {
     const theme = useTheme();
     const projectsRef = useRef(null);
     const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
-    const history = useHistory();
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -135,6 +190,7 @@ export default function LandingPage(props) {
         { img: sample3, title: 'sample 3', },
         { img: sample1, title: 'sample 1', },
     ]
+
 
     const exeperiences = [
         {
@@ -182,11 +238,49 @@ export default function LandingPage(props) {
             props.setWebsiteLink(sample.title);
           }
     */
+
+
     const goToProjectsSection = () => window.scrollTo({ top: projectsRef.current.offsetTop, behavior: 'smooth' });
 
 
     const heroBlock = (
         <React.Fragment>
+            {floatingIcons.map((icon) => {
+
+                const floatAnimation = keyframes`
+0%, 100%{
+    transform: translate(calc(${Math.floor(Math.random() * 95)}vw), calc(${Math.floor(Math.random() * 95)}vh));
+}
+
+25%{
+    transform: translate(calc(${Math.floor(Math.random() * 95)}vw), calc(${Math.floor(Math.random() * 95)}vh));
+}
+
+50%{
+    transform: translate(calc(${Math.floor(Math.random() * 95)}vw), calc(${Math.floor(Math.random() * 95)}vh));
+}
+
+75%{
+    transform: translate(calc(${Math.floor(Math.random() * 95)}vw), calc(${Math.floor(Math.random() * 95)}vh));
+}
+
+`;
+
+const FloatingIconContainer = styled.div`
+width: 30px;
+heicght: 30px;
+transform: translate(calc(0vw), calc(0vh));
+transition-delay: ${Math.floor(Math.random() * 3)}s;
+z-index: 1089;
+animation: ${floatAnimation} 60s linear infinite;`;
+
+                return (
+                    <FloatingIconContainer>
+                        <img src={icon.src} alt={icon.alt} style={{ width: '40px', height: 'auto' }} />
+                    </FloatingIconContainer>
+                )
+            })}
+
             <Grid
                 container
                 direction="column"
@@ -211,9 +305,10 @@ export default function LandingPage(props) {
                     <Button disableRipple
                         onClick={() => goToProjectsSection()}
                         className={classes.downArrow}
-                    >
+                        onClick={goToProjectsSection}>
                         <ArrowDropDownCircleOutlinedIcon
                             style={{ fontSize: 60 }}
+                        // component={HashLink} to={'#projects'}
                         />
                     </Button>
                 </Hidden>
@@ -287,6 +382,7 @@ export default function LandingPage(props) {
                             justifyContent="flex-start"
                             alignItems="center"
                             className={classes.experienceDetailsContainer}
+                        // spacing={2}
                         >
 
                             <Grid item sm={1} lg={1}>  {/*location & date*/}
@@ -335,6 +431,9 @@ export default function LandingPage(props) {
                 <Grid item >
                     {ExperienceBlockDesktop}
                 </Grid>
+                {/* <Grid item >
+                    <FloatBlock/>
+                </Grid> */}
             </Grid>
         </React.Fragment>
     );
